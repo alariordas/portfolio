@@ -1,0 +1,55 @@
+  .resizable {
+    background-size: 90% 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: move;
+    border: 3px dashed #bbb; /* Borde invisible por */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;;
+  }
+.text{
+    
+    font-family: inter;
+}
+  .resizable:hover {
+    border-color: #4286f4; /* Borde azul al hacer hover */
+  }
+  .resizable .resizers {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .resizable .resizers .resizer {
+    width: 10px;
+    height: 10px;
+    
+    background: #bbb;
+    border: 3px solid #bbb; /* Color más claro para el borde */
+    position: absolute;
+  }
+  .resizable:hover .resizers .resizer {
+    border-color: #4286f4; /* Cambiar el color del borde al hacer hover */
+  }
+  .resizable .resizers .resizer.top-left {
+    left: -5px;
+    top: -5px;
+    cursor: nwse-resize;
+  }
+  .resizable .resizers .resizer.top-right {
+    right: -5px;
+    top: -5px;
+    cursor: nesw-resize;
+  }
+  .resizable .resizers .resizer.bottom-left {
+    left: -5px;
+    bottom: -5px;
+    cursor: nesw-resize;
+  }
+  .resizable .resizers .resizer.bottom-right {
+    right: -5px;
+    bottom: -5px;
+    cursor: nwse-resize;
+  }

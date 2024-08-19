@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Experiencia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resize.css">
+
+
+</head>
+<body>
+    <div class="header">
+
+        <h1 class="name">Ángel Lario</h1>
+        <img src="profile.svg" alt="">
+        <div class="resizable" 
+        style="top: 180px; left: 150px; height: 60px; width: 180px; min-width: 100px; max-width: 1200px; max-height: 400px;"
+        data-min-width="100" 
+        data-max-width="1200"
+        data-min-fontsize="16"
+        data-max-fontsize="190"
+        data-min-height="26"
+        data-max-height="170">
+       <p class="text">Desarrollador.</p>
+       <div class="resizers">
+           <div class="resizer top-left"></div>
+           <div class="resizer top-right"></div>
+           <div class="resizer bottom-left"></div>
+           <div class="resizer bottom-right"></div>
+       </div>
+   </div> 
+         <script src="resize.js"></script>
+
+         
+         <button id="theme-toggle-btn">
+            <img src="sun.svg" alt="Toggle Theme">
+        </button>
+        
+<script src="color.js"></script>
+
+    </div>
+    <div class="exp">
+
+
+        <h2><img src="exp.svg" alt="" srcset="">Experiencia Laboral</h2>
+        <div id="timeline">
+            <!-- Experiencia 1 -->
+            <div class="timeline-item">
+                <div class="progress-line"></div>
+                <div class="progress-line-bh"></div>
+                <a class="content" href="hola.com">
+                    <h3>Profesor de Programación para Niños y Adolescentes</h3>
+                    <h4><strong>Codelearn</strong> | Barcelona, España | Noviembre de 2021 - Mayo de 2024</h4>
+                    <blockquote>«No hay mejor manera de aprender que enseñando».</blockquote>
+                    <p>Guié a más de 20 estudiantes semanalmente a través de una amplia gama de conceptos de informática, desde los fundamentos de la programación hasta el desarrollo de proyectos complejos.</p>
+                    <p>Guié a más de 20 estudiantes semanalmente a través de una amplia gama de conceptos de informática, desde los fundamentos de la programación hasta el desarrollo de proyectos complejos.</p>
+                    <p>Guié a más de 20 estudiantes semanalmente a través de una amplia gama de conceptos de informática, desde los fundamentos de la programación hasta el desarrollo de proyectos complejos.</p>
+                    <p>Guié a más de 20 estudiantes semanalmente a través de una amplia gama de conceptos de informática, desde los fundamentos de la programación hasta el desarrollo de proyectos complejos.</p>
+                <div class="stacks">
+                    <div class="stack">
+                        <img src="talk.svg" alt=""> <p>Comunicación</p>
+                    </div>
+                    <div class="stack">
+                        <img src="python.svg" alt=""> <p>Python</p>
+                    </div>
+                    <div class="stack">
+                        <img src="Original_Ferris.svg" alt="" srcset=""> <p>Rust</p>
+                    </div>
+                    <div class="stack">
+                        <img src="csharp.svg" alt="" srcset=""> <p>C#</p>
+                    </div>
+
+                </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+window.addEventListener('scroll', function() {
+    const items = document.querySelectorAll('.timeline-item');
+
+    items.forEach(function(item) {
+        const line = item.querySelector('.progress-line');
+        const rect = item.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Definir los puntos de referencia para el progreso de 40vh a 60vh
+        const startPoint = windowHeight * 0.4;
+        const endPoint = windowHeight * 0.6;
+
+        // Calcular el progreso basado en la visibilidad dentro de los puntos de referencia
+        let progress = 0;
+        if (rect.top < endPoint && rect.bottom > startPoint) {
+            const visibleTop = Math.max(rect.top, startPoint);
+            const visibleBottom = Math.min(rect.bottom, endPoint);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const elementHeight = endPoint - startPoint;
+
+            // Progreso proporcional dentro del rango de 40vh a 60vh
+            progress = Math.min(Math.max((visibleHeight / elementHeight), 0), 1);
+        }
+
+        // Mantener el progreso en el 100% una vez alcanzado
+        const previousProgress = line.dataset.progress ? parseFloat(line.dataset.progress) : 0;
+        if (progress > previousProgress) {
+            line.dataset.progress = progress; // Almacena el progreso actual en un atributo de datos
+        } else {
+            progress = previousProgress; // Usa el progreso almacenado
+        }
+
+        // Ajustar la altura de la barra de progreso
+        line.style.height = `${progress * 100}%`;
+
+        // Añadir o quitar la clase activa
+        if (progress > 0) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+
+        // Ajustar el color de la barra de progreso
+        line.style.backgroundColor = progress > 0 ? 'var(--resault-color)' : '#555'; // Cambia el color si hay progreso
+    });
+});
+
+    </script>
+</body>
+</html>
